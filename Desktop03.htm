@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/taskbar.css">
+    <link rel="stylesheet" href="style/telegram.css">
+    <link rel="stylesheet" href="style/youtube.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            /* همین 100px شامل padding و border هم باشد. */
+            box-sizing: border-box;
+        }
+
+        body {
+            /* این باعث میشه صفحه اسکرول نشه */
+            overflow: hidden;
+            /* مرورگر هیچ فاصله پیش‌فرضی دور صفحه ایجاد نکن. */
+            margin: 0;
+            /* direction: rtl; */
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="desktop">
+        <div id="desktop-background">
+            <div class="icons">
+
+                <a href="telegram.html" class="telegram">
+                    <img src="icon/telegram-logo-1.png" alt="Telegram">
+                </a>
+
+                <a href="youtube.html" class="youtube">
+                    <img src="icon/youtube-logo-2.png" alt="YouTube">
+                </a>
+
+            </div>
+
+            <ul id="context-menu">
+                <li>
+                    view
+                    <ul>
+                        <li>large aicons</li>
+                        <li>medium icons</li>
+                        <li>small icons</li>
+                    </ul>
+                </li>
+                <li>
+                    sort by
+                    <ul>
+                        <li>name</li>
+                        <li>size</li>
+                        <li>ritem type</li>
+                    </ul>
+                </li>
+                <li>refresh</li>
+                <li class="divider"></li>
+
+                <li>
+                    New
+
+                    <ul>
+                        <li>Folder</li>
+                        <li>Shortcut</li>
+                        <li>Text Document</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+        <ul id="taskbar">
+            <li class="start"></li>
+            <li id="search">
+                <img id="search-icon" src="icon/12.png">
+                <input type="text" placeholder="Type here to search">
+            </li>
+            <li class="task_view"></li>
+            <li class="firefox"></li>
+            <li class="microsoft"></li>
+            <li class="file-explorer"></li>
+
+            <ul class="system-tray">
+
+                <li class="icons"></li>
+
+                <li class="language">
+
+                    <span id="current-language">ENG</span>
+
+
+                    <div class="language-menu">
+
+                        <!-- English -->
+                        <div class="language-item" data-language="en">
+
+                            <div class="language-icon">
+                                ENG
+                            </div>
+
+                            <div class="language-content">
+
+                                <div class="language-title">
+                                    English (United States)
+                                </div>
+
+                                <div class="language-subtitle">
+                                    US keyboard
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Persian -->
+                        <div class="language-item selected" data-language="fa">
+
+                            <div class="language-icon">
+                                فا
+                            </div>
+
+                            <div class="language-content">
+
+                                <div class="language-title">
+                                    Persian
+                                </div>
+
+                                <div class="language-subtitle">
+                                    Persian keyboard
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Language preferences -->
+                        <div class="language-item preferences">
+
+                            <div class="language-icon">
+                                A
+                            </div>
+
+                            <div class="language-content">
+
+                                <div class="language-title">
+                                    Language preferences
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </li>
+
+                <li class="clock"></li>
+
+                <li class="notifications"></li>
+
+            </ul>
+        </ul>
+
+
+
+    </div>
+
+
+    <script>
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        const search = document.getElementById("search");
+        const input = document.querySelector("#search input");
+        const icon = document.getElementById("search-icon");
+
+
+        search.addEventListener("click", function (event) {
+
+            event.stopPropagation();
+
+            search.classList.add("search-active");
+
+            icon.src = "icon/13.png";
+
+            input.focus();
+
+        });
+
+
+        /* =====================================================
+           LANGUAGE
+        ===================================================== */
+
+        const language = document.querySelector(".language");
+
+        const languageMenu =
+            document.querySelector(".language-menu");
+
+        const currentLanguage =
+            document.getElementById("current-language");
+
+        const languageOptions =
+            document.querySelectorAll(
+                ".language-menu .language-item"
+            );
+
+
+        /*
+           کلیک روی ENG / FA
+        */
+
+        language.addEventListener("click", function (event) {
+
+            event.stopPropagation();
+
+            languageMenu.classList.toggle("open");
+
+        });
+
+
+        /*
+           انتخاب زبان
+        */
+
+        languageOptions.forEach(function (option) {
+
+            option.addEventListener("click", function (event) {
+
+                event.stopPropagation();
+
+                const selectedLanguage =
+                    option.dataset.language;
+
+
+                /*
+                   selected قبلی حذف شود
+                */
+
+                languageOptions.forEach(function (item) {
+
+                    item.classList.remove("selected");
+
+                });
+
+
+                /*
+                   selected جدید
+                */
+
+                option.classList.add("selected");
+
+
+                /*
+                   تغییر متن Taskbar
+                */
+
+                if (selectedLanguage === "fa") {
+
+                    currentLanguage.textContent = "فا";
+
+                }
+
+                else if (selectedLanguage === "en") {
+
+                    currentLanguage.textContent = "ENG";
+
+                }
+
+
+                /*
+                   بستن منو
+                */
+
+                languageMenu.classList.remove("open");
+
+            });
+
+        });
+
+
+        /* =====================================================
+           CONTEXT MENU
+        ===================================================== */
+
+        const desktop =
+            document.getElementById("desktop-background");
+
+        const contextMenu =
+            document.getElementById("context-menu");
+
+
+        /*
+           راست کلیک روی Desktop
+        */
+
+        desktop.addEventListener("contextmenu", function (event) {
+
+            event.preventDefault();
+
+
+            /*
+               منو را نمایش بده
+               تا اندازه واقعی آن مشخص شود
+            */
+
+            contextMenu.style.display = "block";
+
+
+            /*
+               کلاس های قبلی Submenu پاک شوند
+            */
+
+            const allItems =
+                contextMenu.querySelectorAll("li");
+
+            allItems.forEach(function (item) {
+
+                item.classList.remove("submenu-left");
+
+                const submenu =
+                    item.querySelector(":scope > ul");
+
+                if (submenu) {
+
+                    submenu.style.top = "0px";
+
+                }
+
+            });
+
+
+            /*
+               اندازه منوی اصلی
+            */
+
+            const menuWidth =
+                contextMenu.offsetWidth;
+
+            const menuHeight =
+                contextMenu.offsetHeight;
+
+
+            /*
+               محل موس
+            */
+
+            const mouseX =
+                event.clientX;
+
+            const mouseY =
+                event.clientY;
+
+
+            /* =================================================
+               جهت عمودی منوی اصلی
+            ================================================= */
+
+            if (
+                mouseY + menuHeight >
+                window.innerHeight
+            ) {
+
+                /*
+                   پایین جا ندارد
+                   پس منوی اصلی به بالا
+                */
+
+                contextMenu.style.top =
+                    (mouseY - menuHeight) + "px";
+
+            }
+
+            else {
+
+                /*
+                   پایین جا دارد
+                */
+
+                contextMenu.style.top =
+                    mouseY + "px";
+
+            }
+
+
+            /* =================================================
+               جهت افقی منوی اصلی
+            ================================================= */
+
+            if (
+                mouseX + menuWidth >
+                window.innerWidth
+            ) {
+
+                /*
+                   راست جا ندارد
+                   منو به چپ موس
+                */
+
+                contextMenu.style.left =
+                    (mouseX - menuWidth) + "px";
+
+            }
+
+            else {
+
+                /*
+                   راست جا دارد
+                */
+
+                contextMenu.style.left =
+                    mouseX + "px";
+
+            }
+
+        });
+
+
+        /* =====================================================
+           SMART SUBMENU
+        ===================================================== */
+
+        const contextItems =
+            contextMenu.querySelectorAll(
+                ":scope > li"
+            );
+
+
+        contextItems.forEach(function (item) {
+
+            /*
+               فقط UL مستقیم همین LI
+            */
+
+            const submenu =
+                item.querySelector(":scope > ul");
+
+
+            /*
+               اگر submenu ندارد
+            */
+
+            if (!submenu) {
+
+                return;
+
+            }
+
+
+            /*
+               وقتی موس وارد گزینه می‌شود
+            */
+
+            item.addEventListener(
+                "mouseenter",
+                function () {
+
+
+                    /*
+                       کلاس قبلی را حذف کن
+                    */
+
+                    item.classList.remove(
+                        "submenu-left"
+                    );
+
+
+                    /*
+                       موقعیت واقعی گزینه
+                    */
+
+                    const itemRect =
+                        item.getBoundingClientRect();
+
+
+                    /*
+                       اندازه واقعی submenu
+                    */
+
+                    const submenuWidth =
+                        submenu.offsetWidth;
+
+                    const submenuHeight =
+                        submenu.offsetHeight;
+
+
+                    /*
+                       فضای سمت راست
+                    */
+
+                    const spaceRight =
+                        window.innerWidth -
+                        itemRect.right;
+
+
+                    /*
+                       فضای سمت چپ
+                    */
+
+                    const spaceLeft =
+                        itemRect.left;
+
+
+                    /* =========================================
+                       تشخیص چپ / راست
+                    ========================================= */
+
+
+                    if (
+                        spaceRight < submenuWidth &&
+                        spaceLeft >= submenuWidth
+                    ) {
+
+                        /*
+                           سمت راست جا ندارد
+                           سمت چپ باز شود
+                        */
+
+                        item.classList.add(
+                            "submenu-left"
+                        );
+
+                    }
+
+
+                    /*
+                       اگر هیچ طرف کامل جا ندارد
+                       طرفی که فضای بیشتری دارد
+                    */
+
+                    else if (
+                        spaceRight < submenuWidth &&
+                        spaceLeft > spaceRight
+                    ) {
+
+                        item.classList.add(
+                            "submenu-left"
+                        );
+
+                    }
+
+
+                    /* =========================================
+                       تشخیص ارتفاع Submenu
+                    ========================================= */
+
+
+                    /*
+                       حالت عادی:
+                       بالای submenu برابر بالای LI
+                    */
+
+                    let newTop = 0;
+
+
+                    /*
+                       پایین واقعی Submenu
+                    */
+
+                    const submenuBottom =
+                        itemRect.top +
+                        submenuHeight;
+
+
+                    /*
+                       اگر Submenu از پایین صفحه بیرون بزند
+                    */
+
+                    if (
+                        submenuBottom >
+                        window.innerHeight
+                    ) {
+
+                        /*
+                           به اندازه ای که لازم است
+                           Submenu را بالا ببر
+                        */
+
+                        newTop =
+                            window.innerHeight -
+                            itemRect.top -
+                            submenuHeight;
+
+                    }
+
+
+                    /*
+                       اگر Submenu از بالای صفحه بیرون بزند
+                    */
+
+                    if (
+                        itemRect.top + newTop < 0
+                    ) {
+
+                        newTop =
+                            -itemRect.top;
+
+                    }
+
+
+                    /*
+                       اعمال موقعیت جدید
+                    */
+
+                    submenu.style.top =
+                        newTop + "px";
+
+                }
+            );
+
+
+            /*
+               وقتی موس از گزینه خارج شد
+            */
+
+            item.addEventListener(
+                "mouseleave",
+                function () {
+
+                    /*
+                       به حالت اولیه برگرد
+                    */
+
+                    submenu.style.top = "0px";
+
+                }
+            );
+
+        });
+
+
+        /* =====================================================
+           CLICK OUTSIDE
+        ===================================================== */
+
+        document.addEventListener("click", function () {
+
+            /*
+               Search
+            */
+
+            search.classList.remove(
+                "search-active"
+            );
+
+            icon.src = "icon/12.png";
+
+
+            /*
+               Language
+            */
+
+            languageMenu.classList.remove(
+                "open"
+            );
+
+
+            /*
+               Context Menu
+            */
+
+            contextMenu.style.display =
+                "none";
+
+        });
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,254 @@
+#desktop {
+    /* border: 1px solid red; */
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+#desktop>#desktop-background {
+    /* border: 1px solid rgb(0, 89, 255); */
+    width: 100%;
+    /* height: 90%; */
+    /* هر فضای باقی‌مانده‌ای که داری، من بگیرم. */
+    flex: 1;
+
+    background: url(../images/desktop.jpg);
+    background-size: cover;
+    background-position: center;
+
+    position: relative;
+    /* margin: 100px 50px; */
+}
+
+
+#desktop>#desktop-background>.icons {
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
+    margin-top: 30px;
+    margin-left: 20px;
+
+
+
+}
+
+#desktop>#desktop-background>.icons img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+#desktop>#desktop-background>.icons a {
+    display: inline-block;
+    width: fit-content;
+    height: fit-content;
+}
+
+#desktop>#desktop-background>#context-menu {
+    /* border: 1px solid rgb(102, 255, 0);
+            background: rgba(100, 100, 100, 0.8);
+            margin: 0;
+            padding: 10px;
+            list-style: none;
+            width: 180px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px 1px #ccc;
+            color: #fff;
+            font-family: tahoma;
+            text-align: center;
+            line-height: 40px; */
+    /* منو نسبت به صفحه قرار می‌گیرد */
+    position: fixed;
+
+    /* در ابتدا منو مخفی است */
+    display: none;
+
+    /* عرض منو */
+    width: 180px;
+
+    /* فاصله داخلی منو */
+    padding: 10px;
+
+    /* margin پیش فرض ul را حذف می‌کنیم */
+    margin: 0;
+
+    /* علامت bullet کنار li ها حذف می‌شود */
+    list-style: none;
+
+    /* رنگ پس زمینه منو */
+    background: rgba(50, 50, 50, 0.95);
+
+    /* خط دور منو */
+    border: 1px solid #777;
+
+    /* گوشه های گرد */
+    border-radius: 3px;
+
+    /* سایه منو */
+    box-shadow: 0 0 10px 1px #222;
+
+    /* رنگ متن */
+    color: #fff;
+
+    /* فونت */
+    font-family: Tahoma;
+
+    /* متن وسط قرار بگیرد */
+    text-align: left;
+    font-size: small;
+    /* فاصله عمودی متن */
+    line-height: 40px;
+
+    /* منو روی عناصر دیگر قرار بگیرد */
+    z-index: 9999;
+}
+
+#desktop>#desktop-background>#context-menu>li {
+
+    /* برای قرار دادن submenu نسبت به همین li */
+    position: relative;
+
+    /* خط دور هر گزینه */
+    /* border: 1px solid #ccc; */
+
+    /* گوشه گرد */
+    border-radius: 2px;
+
+
+
+
+    /* فاصله پایین هر گزینه */
+    margin-bottom: 3px;
+
+    /* رنگ متن */
+    color: #ffffff;
+
+}
+
+#desktop>#desktop-background>#context-menu>li:hover {
+    /* رنگ پس زمینه */
+    background: rgba(92, 91, 91, 0.8);
+}
+
+#desktop>#desktop-background>#context-menu ul>li:hover {
+    /* رنگ خط دور گزینه */
+    /* border: 1px solid rgb(255, 251, 0); */
+
+    /* شکل موس تبدیل به دست می‌شود */
+    cursor: pointer;
+
+    /* رنگ پس زمینه هنگام hover */
+    background: #316ac5;
+
+    /* رنگ متن */
+    color: #fff;
+
+
+
+}
+
+#context-menu li.submenu-left>ul {
+    left: auto;
+    right: 100%;
+}
+
+
+#desktop>#desktop-background>#context-menu li>ul {
+    /* border: 1px solid rgb(255, 72, 0); */
+    /* submenu نسبت به li خودش قرار می‌گیرد */
+    position: absolute;
+    /* بالای submenu با بالای li یکی باشد */
+    top: 0;
+    /* submenu به اندازه عرض li به سمت راست برود */
+    left: 100%;
+    /* عرض submenu */
+    width: 180px;
+    /* فاصله داخلی */
+    padding: 10px;
+    /* margin پیش فرض ul حذف */
+    margin: 0;
+    /* bullet حذف */
+    list-style: none;
+    /* پس زمینه submenu */
+    background: rgba(50, 50, 50, 0.95);
+    /* خط دور */
+    border: 1px solid #777;
+    /* گوشه گرد */
+    border-radius: 3px;
+    /* سایه */
+    box-shadow: 0 0 10px 1px #222;
+    /* در ابتدا نامرئی */
+    opacity: 0;
+    /* در ابتدا مخفی */
+    visibility: hidden;
+    /* باز شدن نرم */
+
+    transition:
+        opacity 0.18s ease,
+        top 0.18s ease;
+
+    z-index: 10000;
+}
+
+
+
+/* وقتی روی li می‌رویم،
+   ul داخل آن نمایش داده شود */
+#desktop>#desktop-background>#context-menu li:hover>ul {
+    border: 1px solid #777;
+    /* نامرئی → قابل مشاهده */
+
+    opacity: 1;
+    /* hidden → visible */
+    visibility: visible;
+}
+
+/* گزینه های داخل submenu */
+
+#desktop>#desktop-background>#context-menu li>ul>li {
+    /* border: 1px solid rgb(255, 115, 0); */
+
+    /* ارتفاع هر گزینه */
+    height: 40px;
+
+    /* متن وسط عمودی */
+    line-height: 40px;
+
+    /* فاصله افقی متن */
+    padding: 0 10px;
+
+    /* گوشه گرد */
+    border-radius: 3px;
+
+}
+
+/* hover روی گزینه های submenu */
+
+#desktop>#desktop-background>#context-menu li>ul>li:hover {
+
+    /* رنگ آبی */
+    background: rgba(92, 91, 91, 0.8);
+
+    /* شکل دست */
+    cursor: pointer;
+
+}
+
+/* خط جداکننده بین گزینه ها */
+
+#desktop>#desktop-background>#context-menu>.divider {
+
+    /* ارتفاع خط */
+    height: 1px;
+
+    /* رنگ خط */
+    background: #777;
+
+    /* فاصله بالا و پایین خط */
+    margin: 6px 0;
+
+}

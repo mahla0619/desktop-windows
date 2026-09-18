@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+            overflow: hidden;
+        }
+
+        #desktop {
+            /* border: 1px solid red; */
+            width: 100vw;
+            height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        #desktop>#desktop-background {
+            /* border: 1px solid rgb(81, 255, 0); */
+            width: 100%;
+            /* height: 90%; */
+
+
+            background: url(images/desktop.jpg) no-repeat;
+            background-position: center;
+            background-size: cover;
+
+
+            flex: 1;
+        }
+
+        #desktop>#taskbar {
+            /* border: 1px solid rgb(47, 0, 255); */
+            width: 100%;
+            height: 38px;
+            list-style: none;
+            background-color: #1e2629;
+
+            display: flex;
+        }
+
+        #desktop>#taskbar li:hover {
+            filter: brightness(.9);
+
+        }
+
+
+        #desktop>#taskbar>#start {
+            background: url(icon/01.png) no-repeat;
+            width: 47px;
+            height: 38px;
+        }
+
+
+        #desktop>#taskbar>.search {
+            border: 1px solid rgb(153, 153, 153);
+            width: 290px;
+            height: 38px;
+            background: #333333;
+        }
+
+        #desktop>#taskbar>#task_view {
+            background: url(icon/02.png) no-repeat;
+            width: 38px;
+            height: 38px;
+
+            margin-left: 2px;
+        }
+
+        #desktop>#taskbar>.firefox {
+            background: url(icon/03.png) no-repeat;
+            width: 47px;
+            height: 38px;
+            margin-left: 8px;
+        }
+
+        #desktop>#taskbar>.microsoft {
+            background: url(icon/04.png) no-repeat;
+            width: 47px;
+            height: 38px;
+            margin-left: 6px;
+        }
+
+        #desktop>#taskbar>.file-explorer {
+            background: url(icon/06.png) no-repeat;
+            width: 47px;
+            height: 38px;
+            margin-right: 5px;
+        }
+
+        #desktop>#taskbar>.icons {
+            background: url(icon/07.png) no-repeat;
+            width: 119px;
+            height: 38px;
+
+
+            margin-left: auto;
+        }
+
+        #desktop>#taskbar>.language {}
+
+        #desktop>#taskbar>.clock {}
+    </style>
+</head>
+
+<body>
+    <div id="desktop">
+        <div id="desktop-background"></div>
+        <ul id="taskbar">
+            <li id="start"></li>
+            <ul class="search">
+                <li class="icon"></li>
+                <li class="input"></li>
+            </ul>
+            <li id="task_view"></li>
+            <li class="firefox"></li>
+            <li class="microsoft"></li>
+            <li class="file-explorer"></li>
+            <li class="icons"></li>
+            <li class="language"></li>
+            <li class="clock"></li>
+            <li class="notifications"></li>
+
+        </ul>
+
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>
