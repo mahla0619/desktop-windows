@@ -19,10 +19,183 @@
 
 #background>.sidebar {
 
-    width: 300px;
+    width: 350px;
     height: 650px;
     background: #fff;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     border-radius: 20px;
+    position: relative;
 
+}
+
+#background>.sidebar>.header {
+    height: 50px;
+    border-bottom: 1px solid red;
+
+    display: flex;
+    align-items: center;
+
+    padding: 2px;
+}
+
+#background>.sidebar>.header>.menu {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 3px;
+
+    margin: 20px 10px;
+
+    border: none;
+    background: none;
+    border-radius: 50px;
+
+    cursor: pointer;
+}
+
+#background>.sidebar>.header>.menu:hover {
+    background: #f1f3f5;
+}
+
+#background>.sidebar>.header>.menu span {
+    width: 18px;
+    height: 2px;
+    background: black;
+}
+
+#background>.sidebar>.header>.search {
+    display: flex;
+    /* align-items: center;
+    gap: 8px; */
+    flex: 1;
+    position: relative;
+    padding-right: 9px;
+    /* border: 1px solid rgb(21, 255, 0); */
+}
+
+#background>.sidebar>.header>.search input {
+    flex: 1;
+    border-radius: 20px;
+    outline: none;
+    border: 1px solid transparent;
+    background: #f1f3f5;
+
+
+    width: 80%;
+    height: 40px;
+
+    padding-left: 50px;
+    padding-right: 40px;
+    transition: .2s;
+
+    text-align: start;
+    font-size: 15px;
+}
+
+#background>.sidebar>.header>.search input:hover {
+    border: 1px solid #ccc;
+
+}
+
+#background>.sidebar>.header>.search input:focus-within {
+    border: 2px solid;
+    border-color: #3390ec;
+}
+
+#background>.sidebar>.header>.search:focus-within .search-icon {
+    color: #3390ec;
+}
+
+#background>.sidebar>.header>.search input::placeholder {
+    font-size: 17px;
+    color: #a4a4a4;
+    /* text-indent: 30px; */
+    /* margin-left: 5px; */
+    /* left: 5px; */
+}
+
+#background>.sidebar>.header>.search>.search-icon {
+    width: 30px;
+    height: 30px;
+    left: 15px;
+    top: 7px;
+    /* border: 1px solid red; */
+    padding: 2px;
+
+    color: #bdbdbd;
+
+    position: absolute;
+    transition: .2s;
+    /* right: 55px;
+    top: 50%; */
+    /* transform: translateY(-50%); */
+}
+
+#background>.sidebar>.header>.search>.story {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    /* border: 1px solid red; */
+
+    /* لایه‌ی بیرونی: گرادیان */
+    background: linear-gradient(135deg,
+            #3390ec,
+            #35c759);
+
+    padding: 2px;
+    margin-right: 13px;
+    box-sizing: border-box;
+
+    position: absolute;
+    right: 1px;
+    top: 4px;
+    cursor: pointer;
+
+    opacity: 1;
+    transition: .3s;
+
+}
+
+#background>.sidebar>.header>.search:focus-within .story {
+    /* display: none; */
+    opacity: 0;
+    pointer-events: none;
+}
+
+#background>.sidebar>.header>.search>.story>.story-profile {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+
+    /* فاصله‌ی سفید بین پروفایل و گرادیان */
+    border: 2px solid white;
+
+    /* فعلاً جای عکس پروفایل */
+    background: #ccc;
+
+    box-sizing: border-box;
+}
+
+
+.search-menu {
+    width: 100%;
+    height: calc(100% - 50px);
+    position: absolute;
+    inset: 0;
+
+    background: #f1f3f5;
+    transform: translateY(-110%);
+    transition: transform .6s ease;
+
+    z-index: 10;
+    /* border-radius: 20px; */
+}
+
+.sidebar:has(.search:focus-within) .search-menu {
+    transform: translateY(9%);
 }
