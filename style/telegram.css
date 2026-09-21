@@ -1,81 +1,182 @@
-.telegram img {
-    /* تنظیمات مخصوص تلگرام */
-
+/* ============ ریست پایه ============ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    overflow: hidden;
+}
+
+/* ============ پس‌زمینه ============ */
 #background {
     background-image: url(../images/backgroundTELEGRAM.jpg);
     width: 100vw;
     height: 100vh;
-
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 15px;
+    padding: 15px;
 }
 
+/* ============ سایدبار ============ */
 #background>.sidebar {
-
     width: 350px;
-    height: 650px;
+    height: 590px;
     background: #fff;
-    /* border: 1px solid red; */
     border-radius: 20px;
-    position: relative;
+    overflow: hidden;
 
+    /* position: relative; */
+    /* ← تا گوشه‌ها گرد بمونن */
 }
 
+/* ============ هدر ============ */
 #background>.sidebar>.header {
     height: 50px;
-    border-bottom: 1px solid red;
-
+    /* border-bottom: 1px solid #c70000; */
     display: flex;
     align-items: center;
-
     padding: 2px;
 }
 
+/* ============ دکمه منو ============ */
 #background>.sidebar>.header>.menu {
     width: 40px;
     height: 40px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     gap: 3px;
-
-    margin: 20px 10px;
-
+    margin: 0 10px;
+    /* ← فقط چپ/راست */
     border: none;
     background: none;
-    border-radius: 50px;
-
+    border-radius: 50%;
     cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    /* ← فشرده نشه */
+    transition: background 0.2s;
 }
 
 #background>.sidebar>.header>.menu:hover {
     background: #f1f3f5;
 }
 
-#background>.sidebar>.header>.menu span {
+#background>.sidebar>.header>.menu>span {
     width: 18px;
     height: 2px;
     background: black;
+    border-radius: 2px;
 }
 
+/* ============ منوی اکانت ============ */
+#background>.sidebar>.header>.menu>.account-settings {
+    display: flex;
+    /* border: 1px solid rgb(245, 245, 245); */
+    flex-direction: column;
+    gap: 5px;
+
+    position: absolute;
+    top: 45px;
+    left: 0px;
+    padding: 10px 0;
+    border: 1px solid #f0eeee;
+    border-radius: 15px;
+    background: #fff;
+    text-align: start;
+    white-space: nowrap;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: .4s;
+    z-index: 10;
+
+
+}
+
+#background>.sidebar>.header>.menu:focus-within>.account-settings {
+    visibility: visible;
+    opacity: 1;
+}
+
+#background>.sidebar>.header>.menu>.account-settings>.item {
+    /* border: 1px solid rebeccapurple; */
+    display: flex;
+    gap: 25px;
+    margin-left: 10px;
+    align-items: center;
+    position: relative;
+    padding: 3px 0;
+    border-radius: 20px;
+
+
+}
+
+#background>.sidebar>.header>.menu>.account-settings>.item:hover {
+    background: #f1f3f5;
+
+}
+
+.avatar {
+    width: 30px;
+    /* ← آواتار هم‌اندازه icon */
+    height: 30px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    /* ← اگه حرف کوچیک بدی، خودش بزرگ می‌کنه */
+    user-select: none;
+}
+
+.account-settings .icon {
+    width: 30px;
+    /* ← بزرگ‌تر، چون آواتار داره */
+    height: 30px;
+    ;
+    flex-shrink: 0;
+    color: #363636ec;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.account-settings .icon svg {
+    width: 22px;
+    /* ← SVG کوچیک‌تر */
+    height: 22px;
+}
+
+#background>.sidebar>.header>.menu>.account-settings>.divider {
+    height: 1px;
+    background: #eee;
+    /* margin: 6px 0; */
+
+}
+
+#background>.sidebar>.header>.menu>.account-settings>.item>.icon>.story {
+    margin-right: 102px;
+    width: 30px;
+    height: 30px;
+}
+
+/* ============ جستجو ============ */
 #background>.sidebar>.header>.search {
     display: flex;
-    /* align-items: center;
-    gap: 8px; */
     flex: 1;
     position: relative;
     padding-right: 9px;
-    /* border: 1px solid rgb(21, 255, 0); */
 }
 
 #background>.sidebar>.header>.search input {
@@ -84,118 +185,224 @@
     outline: none;
     border: 1px solid transparent;
     background: #f1f3f5;
-
-
-    width: 80%;
     height: 40px;
-
     padding-left: 50px;
-    padding-right: 40px;
-    transition: .2s;
-
-    text-align: start;
+    padding-right: 50px;
+    transition: border-color 0.2s, background 0.2s;
     font-size: 15px;
 }
 
 #background>.sidebar>.header>.search input:hover {
-    border: 1px solid #ccc;
-
+    border-color: #ccc;
 }
 
-#background>.sidebar>.header>.search input:focus-within {
-    border: 2px solid;
-    border-color: #3390ec;
+#background>.sidebar>.header>.search input:focus {
+    border: 2px solid #3390ec;
+    background: #fff;
+}
+
+#background>.sidebar>.header>.search input::placeholder {
+    font-size: 17px;
+    color: #a4a4a4;
+}
+
+/* ============ آیکون جستجو ============ */
+#background>.sidebar>.header>.search>.search-icon {
+    width: 24px;
+    height: 24px;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    /* ← دقیقاً وسط عمودی */
+    color: #bdbdbd;
+    position: absolute;
+    transition: color 0.2s;
+    pointer-events: none;
 }
 
 #background>.sidebar>.header>.search:focus-within .search-icon {
     color: #3390ec;
 }
 
-#background>.sidebar>.header>.search input::placeholder {
-    font-size: 17px;
-    color: #a4a4a4;
-    /* text-indent: 30px; */
-    /* margin-left: 5px; */
-    /* left: 5px; */
-}
-
-#background>.sidebar>.header>.search>.search-icon {
-    width: 30px;
-    height: 30px;
-    left: 15px;
-    top: 7px;
-    /* border: 1px solid red; */
-    padding: 2px;
-
-    color: #bdbdbd;
-
-    position: absolute;
-    transition: .2s;
-    /* right: 55px;
-    top: 50%; */
-    /* transform: translateY(-50%); */
-}
-
-#background>.sidebar>.header>.search>.story {
+/* ============ دکمه استوری ============ */
+.story {
     width: 33px;
     height: 33px;
     border-radius: 50%;
-    /* border: 1px solid red; */
-
-    /* لایه‌ی بیرونی: گرادیان */
-    background: linear-gradient(135deg,
-            #3390ec,
-            #35c759);
-
+    background: linear-gradient(135deg, #3390ec, #35c759);
     padding: 2px;
-    margin-right: 13px;
     box-sizing: border-box;
-
     position: absolute;
-    right: 1px;
-    top: 4px;
+    right: 14px;
+    /* ← فقط right، نه margin */
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
-
-    opacity: 1;
-    transition: .3s;
-
+    transition: opacity 0.3s;
 }
 
 #background>.sidebar>.header>.search:focus-within .story {
-    /* display: none; */
     opacity: 0;
     pointer-events: none;
 }
 
-#background>.sidebar>.header>.search>.story>.story-profile {
+.story>.story-profile {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-
-    /* فاصله‌ی سفید بین پروفایل و گرادیان */
-    border: 2px solid white;
-
-    /* فعلاً جای عکس پروفایل */
+    border: 2px solid #fff;
     background: #ccc;
-
     box-sizing: border-box;
 }
 
-
-.search-menu {
-    width: 100%;
-    height: calc(100% - 50px);
-    position: absolute;
-    inset: 0;
-
-    background: #f1f3f5;
-    transform: translateY(-110%);
-    transition: transform .6s ease;
-
-    z-index: 10;
-    /* border-radius: 20px; */
+/* ============ محتوا ============ */
+#background>.sidebar>.content {
+    height: 560px;
+    position: relative;
+    border: 1px solid rgb(255, 255, 255);
 }
 
-.sidebar:has(.search:focus-within) .search-menu {
-    transform: translateY(9%);
+/* ============ منوی جستجو (پنل بازشو) ============ */
+#background>.sidebar>.content>.search-menu {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    background: #f1f3f5;
+    z-index: 10;
+    border-radius: 0 0 20px 20px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, visibility 0.2s;
+
+
+    display: flex;
+    flex-direction: column;
+    /* ← عمودی */
+
+}
+
+#background>.sidebar:has(.search:focus-within)>.content>.search-menu {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ============ تب‌های اصلی (فقط یک بار!) ============ */
+.tabs {
+    height: 50px;
+    width: calc(100% - 40px);
+    /* ← فاصله از دو طرف */
+    margin: 20px auto 0;
+    /* ← وسط‌چین افقی */
+    background: #fff;
+    border: 1px solid #f3f2f2;
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 0 5px;
+    /* ← فقط چپ/راست */
+    box-sizing: border-box;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    flex-shrink: 0;
+    /* ← تب‌ها فشرده نشن، ثابت بمونن */
+}
+
+.audience {
+    flex: 1;
+    /* ← بقیه فضا رو پر کنه */
+    overflow-y: auto;
+    /* ← اسکرول عمودی */
+    min-height: 0;
+    /* ← مهم برای flex اسکرول */
+}
+
+.tabs::-webkit-scrollbar {
+    display: none;
+}
+
+/* ============ آیتم‌های تب (یک بار برای همه) ============ */
+.tabs>.tab {
+    /* چیدمان داخلی */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    /* ظاهر */
+    font-size: 16px;
+    color: #707579;
+    background: transparent;
+    padding: 8px 16px;
+    border-radius: 20px;
+
+
+    /* جلوگیری از فشرده شدن و شکستن */
+    flex-shrink: 0;
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    /* انیمیشن نرم (فقط رنگ) */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.tabs>.tab:hover {
+    background: #f1f3f5;
+    color: #333;
+}
+
+/* ============ تب فعال (.tab-active) ============ */
+.tabs>.tab-active {
+    color: #3390ec;
+    background: #e8f1fc;
+    font-weight: 600;
+}
+
+.tabs>.tab-active:hover {
+    background: #d6e8fb;
+    /* ← کمی تیره‌تر موقع هاور */
+    color: #3390ec;
+}
+
+/* #background>.sidebar>.content>.chat-content>.tabs{
+    position: fixed;
+} */
+#background>.sidebar>.content>.Conversation {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #3390ec;
+
+    position: absolute;
+    bottom: 30px;
+    right: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* position: fixed; */
+    z-index: 100;
+
+    cursor: pointer;
+}
+
+#background>.sidebar>.content>.Conversation:hover {
+    background-color: #3485d6;
+
+}
+
+#background>.sidebar>.content>.Conversation>.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+
 }
