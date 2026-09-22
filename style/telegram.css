@@ -23,13 +23,15 @@ body {
 /* ============ سایدبار ============ */
 #background>.sidebar {
     width: 350px;
-    height: 590px;
+    /* height: 590px; */
     background: #fff;
     border-radius: 20px;
-    overflow: hidden;
+    /* overflow: hidden; */
 
-    /* position: relative; */
-    /* ← تا گوشه‌ها گرد بمونن */
+     display: flex;           /* فرزندانش رو flex کن */
+    flex-direction: column;  /* عمودی: هدر بالا، content پایین */
+    height: 590px;           /* ارتفاع ثابت */
+    overflow: hidden;        /* از سایدبار چیزی نزنه بیرون */
 }
 
 /* ============ هدر ============ */
@@ -121,7 +123,30 @@ body {
 
 }
 
+
+
+.icon-account {
+    width: 30px;
+    /* ← بزرگ‌تر، چون آواتار داره */
+    height: 30px;
+    ;
+    flex-shrink: 0;
+    color: #363636ec;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.icon-account svg {
+    width: 22px;
+    /* ← SVG کوچیک‌تر */
+    height: 22px;
+
+}
 .avatar {
+
     width: 30px;
     /* ← آواتار هم‌اندازه icon */
     height: 30px;
@@ -138,26 +163,6 @@ body {
     /* ← اگه حرف کوچیک بدی، خودش بزرگ می‌کنه */
     user-select: none;
 }
-
-.account-settings .icon {
-    width: 30px;
-    /* ← بزرگ‌تر، چون آواتار داره */
-    height: 30px;
-    ;
-    flex-shrink: 0;
-    color: #363636ec;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.account-settings .icon svg {
-    width: 22px;
-    /* ← SVG کوچیک‌تر */
-    height: 22px;
-}
-
 #background>.sidebar>.header>.menu>.account-settings>.divider {
     height: 1px;
     background: #eee;
@@ -260,6 +265,13 @@ body {
     height: 560px;
     position: relative;
     border: 1px solid rgb(255, 255, 255);
+
+     flex: 1;
+    min-height: 0;
+    position: relative;   /* برای .chat و .search-menu که absolute هستن */
+    display: flex;        /* ⭐ */
+    flex-direction: column;/* ⭐ */
+    overflow: hidden;     /* ⭐ اسکرول روی خودش نباشه، روی فرزند باشه */
 }
 
 /* ============ منوی جستجو (پنل بازشو) ============ */
@@ -374,14 +386,14 @@ body {
 /* #background>.sidebar>.content>.chat-content>.tabs{
     position: fixed;
 } */
-#background>.sidebar>.content>.Conversation {
+#background>.sidebar>.content>.chat {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     background-color: #3390ec;
 
     position: absolute;
-    bottom: 30px;
+    bottom: 20px;
     right: 10px;
 
     display: flex;
@@ -394,15 +406,107 @@ body {
     cursor: pointer;
 }
 
-#background>.sidebar>.content>.Conversation:hover {
+#background>.sidebar>.content>.chat:hover {
     background-color: #3485d6;
 
 }
 
-#background>.sidebar>.content>.Conversation>.icon {
+#background>.sidebar>.content>.chat>.icon {
     display: flex;
     align-items: center;
     justify-content: center;
     color: #ffffff;
 
+}
+#background>.sidebar>.content>.chats-list {
+    flex: 1;             /* ⭐ بقیه ارتفاع رو بگیره */
+    min-height: 0;       /* ⭐ کلید اسکرول */
+    overflow-y: auto;    /* ⭐ اسکرول عمودی */
+    overflow-x: hidden;
+}
+
+/* اسکرول‌بار نازک مثل تلگرام */
+#background>.sidebar>.content>.chats-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+#background>.sidebar>.content>.chats-list::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 10px;
+    transition: background 0.2s;
+}
+
+#background>.sidebar>.content>.chats-list:hover::-webkit-scrollbar-thumb {
+    background: #c4c4c4;   /* فقط موقع هاور ظاهر بشه */
+}
+
+/* فایرفاکس */
+#background>.sidebar>.content>.chats-list {
+    scrollbar-width: thin;
+    scrollbar-color: #c4c4c4 transparent;
+}
+.chat-content{
+    display:flex;
+    gap:10px;
+
+width:auto;
+height:60px;
+/* border: 1px solid red; */
+margin:10px;
+padding: 3px 5px 5px 3px;
+}
+.chat-content:hover {
+    background: #f1f3f5;
+}
+.profile{
+    /* border: 1px solid rgb(0, 255, 106); */
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    /* padding:0 0 0 5px; */
+
+
+  width:50px;
+        height:50px;
+
+}
+.icon-account,
+.icon-account>.avatar{
+    width:50px;
+        height:50px;
+          font-size: 20px;
+    font-weight: 600;
+}
+
+.info{
+       /* border: 1px solid rgb(104, 0, 223); */
+         display:flex;
+      flex: 1;      /* این عنصر خودش، توی والدش، بقیه فضا رو بگیره */
+    min-width: 0; /* ⭐ اجازه بده از محتواش کوچیک‌تر بشه */
+    overflow: hidden;
+
+
+         gap:5px;
+         flex-direction:column;
+
+    align-items: flex-start;
+    justify-content:center;
+
+}
+.chat-content>.info>.name{
+font-size:20px;
+font-weight:500;
+color:#050505;
+
+}
+.chat-content>.info>.title{
+    font-size:16px;
+
+color:#9b9b9b;
+text-overflow:ellipsis;
+  overflow: hidden;
+/* flex-shrink:0; */
+max-width:100%;
+/* display:inline-block; */
+white-space:nowrap;
 }

@@ -12,20 +12,31 @@ function getColorFromName(name) {
     return colors[Math.abs(hash) % colors.length];
 }
 
-// اعمال به همه آیتم‌ها
-document.querySelectorAll('.item').forEach(item => {
-    const avatar = item.querySelector('.avatar');
-    const textEl = item.querySelector('.text');
-
-    if (avatar && textEl) {
-        const name = textEl.textContent.trim();
-        if (name) {
-            // حرف اول
-            avatar.textContent = name.charAt(0).toUpperCase();
-            // رنگ خودکار
-            if (!avatar.style.background) {
-                avatar.style.background = getColorFromName(name);
-            }
+// ست کردن آواتار بر اساس اسم
+function applyAvatar(container, name) {
+    const avatar = container.querySelector('.avatar');
+    if (avatar && name) {
+        avatar.textContent = name.charAt(0).toUpperCase();
+        if (!avatar.style.background) {
+            avatar.style.background = getColorFromName(name);
         }
+    }
+}
+
+// ۱) آیتم‌های منوی اکانت
+document.querySelectorAll('.account-settings .item').forEach(item => {
+    const textEl = item.querySelector('.text');
+    if (textEl) {
+        const name = textEl.textContent.trim();
+        if (name) applyAvatar(item, name);
+    }
+});
+
+// ۲) chat-content ها — اسم از .name خونده می‌شه
+document.querySelectorAll('.chat-content').forEach(chat => {
+    const nameEl = chat.querySelector('.name');
+    if (nameEl) {
+        const name = nameEl.textContent.trim();
+        if (name) applyAvatar(chat, name);
     }
 });

@@ -1,202 +1,368 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
-<head>
-    <link rel="stylesheet" href="style/telegram.css">
+  <head>
+    <link rel="stylesheet" href="style/telegram.css" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            overflow: hidden;
-            margin: 0;
-        }
+      body {
+        overflow: hidden;
+        margin: 0;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="background">
-        <div class="sidebar">
+      <div class="sidebar">
+        <div class="header">
+          <button class="menu">
+            <span></span>
+            <span></span>
+            <span></span>
 
-            <div class="header">
-                <button class="menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+            <div class="account-settings">
+              <!-- آیتم اکانت -->
+              <div class="item">
+                <span class="icon-account">
+                  <div class="avatar"></div>
+                </span>
+                <span class="text">mahla</span>
+              </div>
 
-                    <div class="account-settings">
+              <!-- آیتم Add Account -->
+              <div class="item">
+                <span class="icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="M12 5v14" />
+                  </svg>
+                </span>
+                <span class="text">add account</span>
+              </div>
 
-                        <!-- آیتم اکانت -->
-                        <div class="item">
-                            <span class="icon">
-                                <div class="avatar"></div>
-                            </span>
-                            <span class="text">mahla</span>
-                        </div>
+              <div class="divider"></div>
 
-                        <!-- آیتم Add Account -->
-                        <div class="item">
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M5 12h14" />
-                                    <path d="M12 5v14" />
-                                </svg>
-                            </span>
-                            <span class="text">add account</span>
-                        </div>
+              <!-- Saved Messages -->
+              <div class="item">
+                <span class="icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z"
+                    />
+                  </svg>
+                </span>
+                <span class="text">Saved Messages</span>
+              </div>
 
-                        <div class="divider"></div>
+              <!-- Archived Chats -->
+              <div class="item">
+                <span class="icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect width="20" height="5" x="2" y="3" rx="1" />
+                    <path d="M4 8v11a2 2 0 0 0 2 2h2" />
+                    <path d="M20 8v11a2 2 0 0 1-2 2h-2" />
+                    <path d="m9 15 3-3 3 3" />
+                    <path d="M12 12v9" />
+                  </svg>
+                </span>
+                <span class="text">Archived Chats</span>
+              </div>
 
-                        <!-- Saved Messages -->
-                        <div class="item">
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z" />
-                                </svg>
-                            </span>
-                            <span class="text">Saved Messages</span>
-                        </div>
+              <!-- My Stories -->
+              <div class="item">
+                <span class="icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M12 2a10 10 0 0 1 7.38 16.75" />
+                    <path d="M12 8v8" />
+                    <path d="M16 12H8" />
+                    <path d="M2.5 8.875a10 10 0 0 0-.5 3" />
+                    <path d="M2.83 16a10 10 0 0 0 2.43 3.4" />
+                    <path d="M4.636 5.235a10 10 0 0 1 .891-.857" />
+                    <path d="M8.644 21.42a10 10 0 0 0 7.631-.38" />
+                  </svg>
+                </span>
+                <span class="text">My Stories</span>
+              </div>
 
-                        <!-- Archived Chats -->
-                        <div class="item">
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <rect width="20" height="5" x="2" y="3" rx="1" />
-                                    <path d="M4 8v11a2 2 0 0 0 2 2h2" />
-                                    <path d="M20 8v11a2 2 0 0 1-2 2h-2" />
-                                    <path d="m9 15 3-3 3 3" />
-                                    <path d="M12 12v9" />
-                                </svg>
-                            </span>
-                            <span class="text">Archived Chats</span>
-                        </div>
+              <!-- Contacts -->
+              <div class="item">
+                <span class="icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="8" r="5" />
+                    <path d="M20 21a8 8 0 0 0-16 0" />
+                  </svg>
+                </span>
+                <span class="text">Contacts</span>
+              </div>
 
-                        <!-- My Stories -->
-                        <div class="item">
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M12 2a10 10 0 0 1 7.38 16.75" />
-                                    <path d="M12 8v8" />
-                                    <path d="M16 12H8" />
-                                    <path d="M2.5 8.875a10 10 0 0 0-.5 3" />
-                                    <path d="M2.83 16a10 10 0 0 0 2.43 3.4" />
-                                    <path d="M4.636 5.235a10 10 0 0 1 .891-.857" />
-                                    <path d="M8.644 21.42a10 10 0 0 0 7.631-.38" />
-                                </svg>
-                            </span>
-                            <span class="text">My Stories</span>
-                        </div>
+              <div class="divider"></div>
 
-                        <!-- Contacts -->
-                        <div class="item">
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="12" cy="8" r="5" />
-                                    <path d="M20 21a8 8 0 0 0-16 0" />
-                                </svg>
-                            </span>
-                            <span class="text">Contacts</span>
-                        </div>
+              <!-- Settings -->
+              <div class="item">
+                <span class="icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+                    />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                </span>
+                <span class="text">Settings</span>
+              </div>
 
-                        <div class="divider"></div>
-
-                        <!-- Settings -->
-                        <div class="item">
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
-                                    <circle cx="12" cy="12" r="3" />
-                                </svg>
-                            </span>
-                            <span class="text">Settings</span>
-                        </div>
-
-                        <!-- More -->
-                        <div class="item">
-                            <span class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="1" />
-                                    <circle cx="12" cy="5" r="1" />
-                                    <circle cx="12" cy="19" r="1" />
-                                </svg>
-                            </span>
-                            <span class="text">More</span>
-                        </div>
-
-                    </div>
-                </button>
-
-                <div class="search">
-                    <input type="text" placeholder="Search" dir="auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                        class="search-icon">
-                        <path d="m20 21-5.6-6" />
-                        <circle cx="9" cy="9" r="7" />
-                    </svg>
-                    <div class="story">
-                        <div class="story-profile"></div>
-                    </div>
-                </div>
+              <!-- More -->
+              <div class="item">
+                <span class="icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="1" />
+                    <circle cx="12" cy="5" r="1" />
+                    <circle cx="12" cy="19" r="1" />
+                  </svg>
+                </span>
+                <span class="text">More</span>
+              </div>
             </div>
+          </button>
 
-            <div class="content">
-                <div class="search-menu">
-                    <div class="tabs">
-                        <div class="tab tab-active">Chats</div>
-                        <div class="tab">Channels</div>
-                        <div class="tab">Apps</div>
-                        <div class="tab">Post</div>
-                        <div class="tab">Media</div>
-                    </div>
-                    <div class="audience"></div>
-                </div>
-
-                <div class="chat-content">
-                    <div class="tabs">
-                        <div class="tab tab-active">All</div>
-                        <div class="tab">Channels</div>
-                        <div class="tab">Apps</div>
-                        <div class="tab">Post</div>
-                        <div class="tab">Media</div>
-                    </div>
-                </div>
-
-                <div class="Conversation">
-                    <div class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                            <path d="m15 5 4 4" />
-                        </svg>
-                    </div>
-                </div>
+          <div class="search">
+            <input type="text" placeholder="Search" dir="auto" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="search-icon"
+            >
+              <path d="m20 21-5.6-6" />
+              <circle cx="9" cy="9" r="7" />
+            </svg>
+            <div class="story">
+              <div class="story-profile"></div>
             </div>
-
+          </div>
         </div>
+
+        <div class="content">
+          <div class="search-menu">
+            <div class="tabs">
+              <div class="tab tab-active">Chats</div>
+              <div class="tab">Channels</div>
+              <div class="tab">Apps</div>
+              <div class="tab">Post</div>
+              <div class="tab">Media</div>
+            </div>
+            <div class="audience"></div>
+          </div>
+
+          <div class="header-content">
+            <div class="tabs">
+              <div class="tab tab-active">All</div>
+              <div class="tab">Channels</div>
+              <div class="tab">Apps</div>
+              <div class="tab">Post</div>
+              <div class="tab">Media</div>
+            </div>
+          </div>
+          <div class="chats-list">
+            <div class="chat-content">
+              <div class="profile">
+                <span class="icon-account">
+                  <div class="avatar"></div>
+                </span>
+              </div>
+              <div class="info">
+                <div class="name top">Saved Messages</div>
+                <div class="title">Sticker</div>
+              </div>
+            </div>
+            <div class="chat-content">
+              <div class="profile">
+                <span class="icon-account">
+                  <div class="avatar"></div>
+                </span>
+              </div>
+              <div class="info">
+                <div class="name">zahra</div>
+                <div class="title">
+                  last seen
+                  recentlyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-content">
+              <div class="profile">
+                <span class="icon-account">
+                  <div class="avatar"></div>
+                </span>
+              </div>
+              <div class="info">
+                <div class="name">rha</div>
+                <div class="title">Sticker</div>
+              </div>
+            </div>
+            <div class="chat-content">
+              <div class="profile">
+                <span class="icon-account">
+                  <div class="avatar"></div>
+                </span>
+              </div>
+              <div class="info">
+                <div class="name">zyy</div>
+                <div class="title">zyy Joined Telegram</div>
+              </div>
+            </div>
+
+            <div class="chat-content">
+              <div class="profile">
+                <span class="icon-account">
+                  <div class="avatar"></div>
+                </span>
+              </div>
+              <div class="info">
+                <div class="name">my</div>
+                <div class="title">is typing...</div>
+              </div>
+            </div>
+            <div class="chat-content">
+              <div class="profile">
+                <span class="icon-account">
+                  <div class="avatar"></div>
+                </span>
+              </div>
+              <div class="info">
+                <div class="name">zahra</div>
+                <div class="title">Sticker</div>
+              </div>
+            </div>
+            <div class="chat-content">
+              <div class="profile">
+                <span class="icon-account">
+                  <div class="avatar"></div>
+                </span>
+              </div>
+              <div class="info">
+                <div class="name">Gym</div>
+                <div class="title">tamrin 10:00 - 11:00</div>
+              </div>
+            </div>
+            <div class="chat-content">
+              <div class="profile">
+                <span class="icon-account">
+                  <div class="avatar"></div>
+                </span>
+              </div>
+              <div class="info">
+                <div class="name">ekip</div>
+                <div class="title">is typing...</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat">
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"
+                />
+                <path d="m15 5 4 4" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="js/telegram.js"></script>
-</body>
-
+  </body>
 </html>
