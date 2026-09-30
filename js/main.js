@@ -1,0 +1,341 @@
+ /* =====================================================
+           SEARCH
+        ===================================================== */
+
+      const search = document.getElementById("search");
+      const input = document.querySelector("#search input");
+      const icon = document.getElementById("search-icon");
+
+      search.addEventListener("click", function (event) {
+        event.stopPropagation();
+
+        search.classList.add("search-active");
+
+        icon.src = "icon/13.png";
+
+        input.focus();
+      });
+
+      /* =====================================================
+           LANGUAGE
+        ===================================================== */
+
+      const language = document.querySelector(".language");
+
+      const languageMenu = document.querySelector(".language-menu");
+
+      const currentLanguage = document.getElementById("current-language");
+
+      const languageOptions = document.querySelectorAll(
+        ".language-menu .language-item",
+      );
+
+      /*
+           کلیک روی ENG / FA
+        */
+
+      language.addEventListener("click", function (event) {
+        event.stopPropagation();
+
+        languageMenu.classList.toggle("open");
+      });
+
+      /*
+           انتخاب زبان
+        */
+
+      languageOptions.forEach(function (option) {
+        option.addEventListener("click", function (event) {
+          event.stopPropagation();
+
+          const selectedLanguage = option.dataset.language;
+
+          /*
+                   selected قبلی حذف شود
+                */
+
+          languageOptions.forEach(function (item) {
+            item.classList.remove("selected");
+          });
+
+          /*
+                   selected جدید
+                */
+
+          option.classList.add("selected");
+
+          /*
+                   تغییر متن Taskbar
+                */
+
+          if (selectedLanguage === "fa") {
+            currentLanguage.textContent = "فا";
+          } else if (selectedLanguage === "en") {
+            currentLanguage.textContent = "ENG";
+          }
+
+          /*
+                   بستن منو
+                */
+
+          languageMenu.classList.remove("open");
+        });
+      });
+
+      /* =====================================================
+           CONTEXT MENU
+        ===================================================== */
+
+      const desktop = document.getElementById("desktop-background");
+
+      const contextMenu = document.getElementById("context-menu");
+
+      /*
+           راست کلیک روی Desktop
+        */
+
+      desktop.addEventListener("contextmenu", function (event) {
+        event.preventDefault();
+
+        /*
+               منو را نمایش بده
+               تا اندازه واقعی آن مشخص شود
+            */
+
+        contextMenu.style.display = "block";
+
+        /*
+               کلاس های قبلی Submenu پاک شوند
+            */
+
+        const allItems = contextMenu.querySelectorAll("li");
+
+        allItems.forEach(function (item) {
+          item.classList.remove("submenu-left");
+
+          const submenu = item.querySelector(":scope > ul");
+
+          if (submenu) {
+            submenu.style.top = "0px";
+          }
+        });
+
+        /*
+               اندازه منوی اصلی
+            */
+
+        const menuWidth = contextMenu.offsetWidth;
+
+        const menuHeight = contextMenu.offsetHeight;
+
+        /*
+               محل موس
+            */
+
+        const mouseX = event.clientX;
+
+        const mouseY = event.clientY;
+
+        /* =================================================
+               جهت عمودی منوی اصلی
+            ================================================= */
+
+        if (mouseY + menuHeight > window.innerHeight) {
+          /*
+                   پایین جا ندارد
+                   پس منوی اصلی به بالا
+                */
+
+          contextMenu.style.top = mouseY - menuHeight + "px";
+        } else {
+          /*
+                   پایین جا دارد
+                */
+
+          contextMenu.style.top = mouseY + "px";
+        }
+
+        /* =================================================
+               جهت افقی منوی اصلی
+            ================================================= */
+
+        if (mouseX + menuWidth > window.innerWidth) {
+          /*
+                   راست جا ندارد
+                   منو به چپ موس
+                */
+
+          contextMenu.style.left = mouseX - menuWidth + "px";
+        } else {
+          /*
+                   راست جا دارد
+                */
+
+          contextMenu.style.left = mouseX + "px";
+        }
+      });
+
+      /* =====================================================
+           SMART SUBMENU
+        ===================================================== */
+
+      const contextItems = contextMenu.querySelectorAll(":scope > li");
+
+      contextItems.forEach(function (item) {
+        /*
+               فقط UL مستقیم همین LI
+            */
+
+        const submenu = item.querySelector(":scope > ul");
+
+        /*
+               اگر submenu ندارد
+            */
+
+        if (!submenu) {
+          return;
+        }
+
+        /*
+               وقتی موس وارد گزینه می‌شود
+            */
+
+        item.addEventListener("mouseenter", function () {
+          /*
+                       کلاس قبلی را حذف کن
+                    */
+
+          item.classList.remove("submenu-left");
+
+          /*
+                       موقعیت واقعی گزینه
+                    */
+
+          const itemRect = item.getBoundingClientRect();
+
+          /*
+                       اندازه واقعی submenu
+                    */
+
+          const submenuWidth = submenu.offsetWidth;
+
+          const submenuHeight = submenu.offsetHeight;
+
+          /*
+                       فضای سمت راست
+                    */
+
+          const spaceRight = window.innerWidth - itemRect.right;
+
+          /*
+                       فضای سمت چپ
+                    */
+
+          const spaceLeft = itemRect.left;
+
+          /* =========================================
+                       تشخیص چپ / راست
+                    ========================================= */
+
+          if (spaceRight < submenuWidth && spaceLeft >= submenuWidth) {
+            /*
+                           سمت راست جا ندارد
+                           سمت چپ باز شود
+                        */
+
+            item.classList.add("submenu-left");
+          } else if (spaceRight < submenuWidth && spaceLeft > spaceRight) {
+            /*
+                       اگر هیچ طرف کامل جا ندارد
+                       طرفی که فضای بیشتری دارد
+                    */
+            item.classList.add("submenu-left");
+          }
+
+          /* =========================================
+                       تشخیص ارتفاع Submenu
+                    ========================================= */
+
+          /*
+                       حالت عادی:
+                       بالای submenu برابر بالای LI
+                    */
+
+          let newTop = 0;
+
+          /*
+                       پایین واقعی Submenu
+                    */
+
+          const submenuBottom = itemRect.top + submenuHeight;
+
+          /*
+                       اگر Submenu از پایین صفحه بیرون بزند
+                    */
+
+          if (submenuBottom > window.innerHeight) {
+            /*
+                           به اندازه ای که لازم است
+                           Submenu را بالا ببر
+                        */
+
+            newTop = window.innerHeight - itemRect.top - submenuHeight;
+          }
+
+          /*
+                       اگر Submenu از بالای صفحه بیرون بزند
+                    */
+
+          if (itemRect.top + newTop < 0) {
+            newTop = -itemRect.top;
+          }
+
+          /*
+                       اعمال موقعیت جدید
+                    */
+
+          submenu.style.top = newTop + "px";
+        });
+
+        /*
+               وقتی موس از گزینه خارج شد
+            */
+
+        item.addEventListener("mouseleave", function () {
+          /*
+                       به حالت اولیه برگرد
+                    */
+
+          submenu.style.top = "0px";
+        });
+      });
+
+      /* =====================================================
+           CLICK OUTSIDE
+        ===================================================== */
+
+      document.addEventListener("click", function () {
+        /*
+               Search
+            */
+
+        search.classList.remove("search-active");
+
+        icon.src = "icon/12.png";
+
+        /*
+               Language
+            */
+
+        languageMenu.classList.remove("open");
+
+        /*
+               Context Menu
+            */
+
+        contextMenu.style.display = "none";
+      });
+
+
+
+      

@@ -13,13 +13,23 @@ function getColorFromName(name) {
 }
 
 // ست کردن آواتار بر اساس اسم
+// function applyAvatar(container, name) {
+//     const avatar = container.querySelector('.avatar');
+//     if (avatar && name) {
+//         avatar.textContent = name.charAt(0).toUpperCase();
+//         if (!avatar.style.background) {
+//             avatar.style.background = getColorFromName(name);
+//         }
+//     }
+// }
 function applyAvatar(container, name) {
-    const avatar = container.querySelector('.avatar');
+    const avatar = container.querySelector(".avatar");
+
     if (avatar && name) {
         avatar.textContent = name.charAt(0).toUpperCase();
-        if (!avatar.style.background) {
-            avatar.style.background = getColorFromName(name);
-        }
+
+        // هر بار رنگ جدید بر اساس اسم محاسبه شود
+        avatar.style.background = getColorFromName(name);
     }
 }
 
@@ -40,3 +50,97 @@ document.querySelectorAll('.chat-content').forEach(chat => {
         if (name) applyAvatar(chat, name);
     }
 });
+
+
+// چت‌ها
+const chatItems = document.querySelectorAll(".chats-list .chat-content");
+
+const chatScreen = document.querySelector("#chat-screen");
+
+const chatName = document.querySelector("#chat-name");
+const chatStatus = document.querySelector("#chat-status");
+
+const chatData = {
+  saved: {
+    name: "Saved Messages",
+    status: "160 messages",
+  },
+
+  zahra: {
+    name: "zahra",
+    status: "last seen recently",
+  },
+
+  rha: {
+    name: "rha",
+    status: "last seen recently",
+  },
+
+  zyy: {
+    name: "zyy",
+    status: "last seen recently",
+  },
+
+  my: {
+    name: "my",
+    status: "is typing...",
+  },
+
+  gym: {
+    name: "Gym",
+    status: "20 member",
+  },
+
+  ekip: {
+    name: "ekip",
+    status: "3 member",
+  },
+};
+
+
+chatItems.forEach(function (chat) {
+
+  chat.addEventListener("click", function () {
+
+    const chatId = chat.dataset.chatId;
+
+    const selectedChat = chatData[chatId];
+
+    chatName.textContent = selectedChat.name;
+
+    chatStatus.textContent = selectedChat.status;
+
+    // ساخت آواتار برای ChatScreen
+    applyAvatar(
+      document.querySelector("#chat-screen .profile"),
+      selectedChat.name
+    );
+
+    chatScreen.classList.remove("hide");
+
+  });
+
+});
+
+
+const messageInput = document.querySelector("#message-input");
+const sendButton = document.querySelector("#send-button");
+const messageMain = document.querySelector(".ChatScreen .main");
+function sendMessage() {
+
+    const text = messageInput.value.trim();
+
+    if (text === "") {
+        return;
+    }
+
+    const message = document.createElement("div");
+
+    message.classList.add("message");
+
+    message.textContent = text;
+
+    messageMain.appendChild(message);
+
+    messageInput.value = "";
+}

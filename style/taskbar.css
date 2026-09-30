@@ -1,291 +1,300 @@
-#desktop>#taskbar {
-    border-right: 1px solid #eee;
+#desktop > #taskbar {
+  border-right: 1px solid #eee;
 
-    width: 100%;
-    height: 38px;
-    background-color: #1e2629;
+  width: 100%;
+  height: 38px;
+  background-color: #1e2629;
 
-    display: flex;
-    /* برای اینکه لیست ان نقطه  ها نباشه نان میکنیم */
-    list-style: none;
-    /* gap: 50px; */
-
+  display: flex;
+  /* برای اینکه لیست ان نقطه  ها نباشه نان میکنیم */
+  list-style: none;
+  /* gap: 50px; */
 }
 
-#desktop>#taskbar>.start {
-    background: url(../icon/01.png) no-repeat;
-    width: 47px;
-    height: 38px;
-
+#desktop > #taskbar > .start {
+  background: url(../icon/01.png) no-repeat;
+  width: 47px;
+  height: 38px;
 }
 
 /* وقتی سرچ فعال شد */
 .search-active {
-
-    background: white !important;
-
+  background: white !important;
 }
 
 .search-active input {
-    /* وقتی کاربر تایپ می‌کند: مشکی */
+  /* وقتی کاربر تایپ می‌کند: مشکی */
 
-    color: #000;
-
+  color: #000;
 }
 
 .search-active input::placeholder {
-
-    color: #444;
-
+  color: #444;
 }
 
+#desktop > #taskbar > #search {
+  border: 1px solid #ccccccce;
+  width: 288px;
+  height: 100%;
+  background: #333333;
 
-#desktop>#taskbar>#search {
-    border: 1px solid #ccccccce;
-    width: 288px;
-    height: 100%;
-    background: #333333;
-
-    /* margin-right: 200px; */
-    display: flex;
-    align-items: center;
-    gap: 5px;
-
+  /* margin-right: 200px; */
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-#desktop>#taskbar>#search img {
-    margin-left: 6px;
+#desktop > #taskbar > #search img {
+  margin-left: 6px;
 }
 
-#desktop>#taskbar>#search input {
-    border: none;
-    outline: none;
-    background: transparent;
-    width: 100%;
-    color: #fff;
+#desktop > #taskbar > #search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  color: #fff;
 }
 
-#desktop>#taskbar>.task_view {
-    background: url(../icon/02.png) no-repeat;
-    width: 38px;
-    height: 38px;
-    margin-left: 5px;
-    margin-right: 8px;
+#desktop > #taskbar > .task_view {
+  background: url(../icon/02.png) no-repeat;
+  width: 38px;
+  height: 38px;
+  margin-left: 5px;
+  margin-right: 8px;
 }
 
-#desktop>#taskbar>.firefox {
-    background: url(../icon/03.png) no-repeat;
-    width: 38px;
-    height: 38px;
+#desktop > #taskbar > .firefox {
+  background: url(../icon/03.png) no-repeat;
+  width: 38px;
+  height: 38px;
 }
 
-#desktop>#taskbar>.microsoft {
-    background: url(../icon/04.png) no-repeat;
-    width: 38px;
-    height: 38px;
-    margin-left: 15px;
+#desktop > #taskbar > .microsoft {
+  background: url(../icon/04.png) no-repeat;
+  width: 38px;
+  height: 38px;
+  margin-left: 15px;
 }
 
-#desktop>#taskbar>.file-explorer {
-    background: url(../icon/10.png) no-repeat;
-    width: 38px;
-    height: 38px;
-    margin-left: 15px;
+#desktop > #taskbar > .file-explorer {
+  background: url(../icon/10.png) no-repeat;
+  width: 38px;
+  height: 38px;
+  margin-left: 15px;
+}
+#desktop > #taskbar > .telegram {
+  background-image: url(../icon/telegram-logo-1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 28px;
+  height: 28px;
+  margin-left: 15px;
+    margin-top: 3px;
+
+  /* border: 1px solid red; */
+}
+#desktop > #taskbar > .telegram:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-bottom: 2px solid rgb(31, 156, 240);
+  
+}
+#desktop > #taskbar > .youtube {
+  background-image: url(../icon/youtube-logo-2.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 28px;
+  height: 28px;
+  margin-left: 15px;
+  margin-top: 3px;
+  /* border: 1px solid red; */
+}
+#desktop > #taskbar > .system-tray {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  height: 100%;
+  list-style: none;
 }
 
-#desktop>#taskbar>.system-tray {
-
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    height: 100%;
-    list-style: none;
+#desktop > #taskbar > .system-tray > .icons {
+  background: url(../icon/11.png) no-repeat;
+  width: 130px;
+  height: 38px;
+  /* margin-right: 18px; */
 }
 
-
-#desktop>#taskbar>.system-tray>.icons {
-    background: url(../icon/11.png) no-repeat;
-    width: 130px;
-    height: 38px;
-    /* margin-right: 18px; */
-}
-
-#desktop>#taskbar>.system-tray>.language {
-    /* color: #fff;
+#desktop > #taskbar > .system-tray > .language {
+  /* color: #fff;
             user-select: none;
             margin-top: 0px;
             margin-right: 55px; */
 
-    position: relative;
+  position: relative;
 
-    color: #fff;
-    user-select: none;
+  color: #fff;
+  user-select: none;
 
-    margin-top: 0;
-    margin-right: 55px;
+  margin-top: 0;
+  margin-right: 55px;
 
-    height: 38px;
+  height: 38px;
 
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    cursor: pointer;
-
+  cursor: pointer;
 }
 
 /* متن FA / EN */
 #current-language {
-    display: block;
+  display: block;
 }
 
 /* منوی زبان */
 .language-menu {
-    /* position: absolute; */
-    position: fixed;
-    right: 0px;
-    bottom: 38px;
-    /* left: auto; */
-    width: 330px;
+  /* position: absolute; */
+  position: fixed;
+  right: 0px;
+  bottom: 38px;
+  /* left: auto; */
+  width: 330px;
 
-    background: rgba(30, 30, 30, 0.96);
+  background: rgba(30, 30, 30, 0.96);
 
-    color: white;
+  color: white;
 
-    border: 1px solid #555;
+  border: 1px solid #555;
 
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 
-    /* display: none; */
+  /* display: none; */
 
-    z-index: 9999;
-    /* حالت بسته */
-    opacity: 0;
-    visibility: hidden;
+  z-index: 9999;
+  /* حالت بسته */
+  opacity: 0;
+  visibility: hidden;
 
-    /* از پایین به بالا */
-    transform: translateY(20px);
+  /* از پایین به بالا */
+  transform: translateY(20px);
 
-    transform-origin: bottom center;
+  transform-origin: bottom center;
 
-    transition:
-        opacity 0.25s ease,
-        transform 0.25s ease,
-        visibility 0.25s ease;
-
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
 }
 
 /* حالت باز */
 
 .language-menu.open {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 
-    transform: translateY(0);
+  transform: translateY(0);
 }
 
 .language-item {
-    display: grid;
+  display: grid;
 
-    grid-template-columns: 65px 1fr;
+  grid-template-columns: 65px 1fr;
 
-    min-height: 65px;
+  min-height: 65px;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .language-icon {
-    display: flex;
+  display: flex;
 
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 
-    font-size: 16px;
+  font-size: 16px;
 
-    color: #ddd;
+  color: #ddd;
 }
 
 .language-content {
-    /* border-left: 1px solid #555; */
+  /* border-left: 1px solid #555; */
 
-    padding: 10px 12px;
+  padding: 10px 12px;
 
-    display: flex;
+  display: flex;
 
-    flex-direction: column;
+  flex-direction: column;
 
-    justify-content: center;
+  justify-content: center;
 }
 
 .language-title {
-    font-size: 14px;
+  font-size: 14px;
 
-    line-height: 22px;
+  line-height: 22px;
 }
 
 .language-subtitle {
-    font-size: 13px;
+  font-size: 13px;
 
-    color: #ccc;
+  color: #ccc;
 
-    line-height: 20px;
+  line-height: 20px;
 }
 
 .language-item.selected {
-    background: #b49b20;
+  background: #b49b20;
 }
 
 .language-item:hover {
-    background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .language-item.selected:hover {
-    background: #b49b20;
+  background: #b49b20;
 }
 
 .language-item.preferences {
-    min-height: 60px;
+  min-height: 60px;
 
-    margin-top: 5px;
+  margin-top: 5px;
 
-    border-top: 1px solid #555;
+  border-top: 1px solid #555;
 }
 
 /* گزینه های منو */
 .language-menu li {
-    height: 35px;
+  height: 35px;
 
-    line-height: 35px;
+  line-height: 35px;
 
-    padding: 0 10px;
+  padding: 0 10px;
 
-    color: #fff;
+  color: #fff;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    list-style: none;
+  list-style: none;
 }
-
 
 /* وقتی موس روی گزینه می رود */
 .language-menu li:hover {
-    background: #316ac5;
+  background: #316ac5;
 }
 
 /* #desktop>#taskbar>.clock {} */
 
-#desktop>#taskbar>.system-tray>.notifications {
-    background: url(../icon/08.png) no-repeat;
-    width: 48px;
-    height: 38px;
-    /* margin-left: auto; */
-    margin-top: 3px;
-
-
+#desktop > #taskbar > .system-tray > .notifications {
+  background: url(../icon/08.png) no-repeat;
+  width: 48px;
+  height: 38px;
+  /* margin-left: auto; */
+  margin-top: 3px;
 }
 
-#desktop>#taskbar li:hover {
-
-    filter: brightness(.9);
-
+#desktop > #taskbar li:hover {
+  filter: brightness(0.9);
 }

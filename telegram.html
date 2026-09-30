@@ -244,7 +244,7 @@
             </div>
           </div>
           <div class="chats-list">
-            <div class="chat-content">
+            <div class="chat-content" data-chat-id="saved">
               <div class="profile">
                 <span class="icon-account">
                   <div class="avatar"></div>
@@ -255,7 +255,7 @@
                 <div class="title">Sticker</div>
               </div>
             </div>
-            <div class="chat-content">
+            <div class="chat-content" data-chat-id="zahra">
               <div class="profile">
                 <span class="icon-account">
                   <div class="avatar"></div>
@@ -270,9 +270,9 @@
               </div>
             </div>
 
-            <div class="chat-content">
+            <div class="chat-content" data-chat-id="rha">
               <div class="profile">
-                <span class="icon-account">
+                <span class="icon-account" data-chat-id="rha">
                   <div class="avatar"></div>
                 </span>
               </div>
@@ -281,7 +281,7 @@
                 <div class="title">Sticker</div>
               </div>
             </div>
-            <div class="chat-content">
+            <div class="chat-content" data-chat-id="zyy">
               <div class="profile">
                 <span class="icon-account">
                   <div class="avatar"></div>
@@ -293,7 +293,7 @@
               </div>
             </div>
 
-            <div class="chat-content">
+            <div class="chat-content" data-chat-id="my">
               <div class="profile">
                 <span class="icon-account">
                   <div class="avatar"></div>
@@ -315,7 +315,7 @@
                 <div class="title">Sticker</div>
               </div>
             </div>
-            <div class="chat-content">
+            <div class="chat-content"  data-chat-id="gym">
               <div class="profile">
                 <span class="icon-account">
                   <div class="avatar"></div>
@@ -326,7 +326,7 @@
                 <div class="title">tamrin 10:00 - 11:00</div>
               </div>
             </div>
-            <div class="chat-content">
+            <div class="chat-content" data-chat-id="ekip">
               <div class="profile">
                 <span class="icon-account">
                   <div class="avatar"></div>
@@ -358,6 +358,109 @@
                 <path d="m15 5 4 4" />
               </svg>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ChatScreen hide" id="chat-screen">
+        <div class="header">
+          <button class="menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <div class="search">
+            <!-- <input type="text" placeholder="Search" dir="auto" /> -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="search-icon"
+            >
+              <path d="m20 21-5.6-6" />
+              <circle cx="9" cy="9" r="7" />
+            </svg>
+          </div>
+
+          <div class="chat-content">
+            <div class="profile">
+              <span class="icon-account">
+                <div class="avatar" id="chat-avatar"></div>
+              </span>
+            </div>
+            <div class="info">
+              <div class="name top" id="chat-name">Saved Messages</div>
+              <div class="title" id="chat-status">160 messages</div>
+            </div>
+          </div>
+        </div>
+        <div class="main"></div>
+        <div class="message-input">
+          <div class="send" id="send-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-mic preview-icon"
+            >
+              <path d="M12 19v3" />
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+              <rect x="9" y="2" width="6" height="13" rx="3" />
+            </svg>
+          </div>
+
+          <div class="Emoji">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-face-slightly-smiling preview-icon"
+            >
+              <path d="M15 10V9" />
+              <path d="M16.472 15a6 6 0 01-8.943 0" />
+              <path d="M9 10V9" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+          </div>
+          <div class="typing">
+            <input id="message-input" type="message" placeholder="Message" />
+          </div>
+          <div class="files">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-paperclip preview-icon"
+            >
+              <path
+                d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551"
+              />
+            </svg>
           </div>
         </div>
       </div>
