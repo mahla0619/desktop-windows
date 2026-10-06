@@ -1,3 +1,29 @@
+       const telegram = document.querySelector(".telegram");
+       const telegramTask = document.querySelector(".telegramTas");
+ const desktopBackground = document.querySelector("#desktop-background");
+const icons = document.querySelector(".icons");
+const telegramFrame  = document.querySelector("#telegram-frame");
+
+
+icons.addEventListener("click", function () {
+  icons.style.display = "none";
+  telegramFrame.src ="telegram.html";
+    telegramFrame.style.display = "block";
+  telegramTask.style.backgroundColor ="rgba(255, 255, 255, 0.12)";
+
+});
+
+
+//         telegram.addEventListener("click", function () {
+//         telegramTask.style.backgroundColor ="rgba(255, 255, 255, 0.12)";
+
+//         });
+
+// telegramTask.addEventListener("click", function () {
+//         telegramTask.style.src = "telegram.html";
+
+//  });
+
  /* =====================================================
            SEARCH
         ===================================================== */
@@ -335,7 +361,3 @@
 
         contextMenu.style.display = "none";
       });
-
-
-
-      
