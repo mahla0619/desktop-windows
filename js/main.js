@@ -1,28 +1,52 @@
-       const telegram = document.querySelector(".telegram");
-       const telegramTask = document.querySelector(".telegramTas");
- const desktopBackground = document.querySelector("#desktop-background");
 const icons = document.querySelector(".icons");
-const telegramFrame  = document.querySelector("#telegram-frame");
+const appFrame  = document.querySelector("#app-frame");
+const taskbar = document.querySelector("#taskbar");
 
+function activateTask(taskElement) {
+    taskElement.style.backgroundColor = "rgba(255, 255, 255, 0.12)";
+    taskElement.style.borderColor = "rgb(31, 156, 240)";
+}
 
-icons.addEventListener("click", function () {
-  icons.style.display = "none";
-  telegramFrame.src ="telegram.html";
-    telegramFrame.style.display = "block";
-  telegramTask.style.backgroundColor ="rgba(255, 255, 255, 0.12)";
-
+icons.addEventListener("click", function (event) {
+         // اینجا باید بفهمیم کدام آیکون کلیک شده
+         //   «از عنصری که کلیک شده، نزدیک‌ترین <a> والد را پیدا کن و داخل clickedIcon ذخیره کن.»
+        const clickedIcon = event.target.closest("a");
+        console.log(event.target);
+        openApp(clickedIcon);
 });
 
+function openApp(clickedIcon) {
+    const page = clickedIcon.dataset.page;
+      console.log(page);
+    const task = clickedIcon.dataset.task;
+      console.log(task);
+    const taskElement = document.querySelector("." + task);
+    console.log(taskElement);
 
-//         telegram.addEventListener("click", function () {
-//         telegramTask.style.backgroundColor ="rgba(255, 255, 255, 0.12)";
+    appFrame.src =page;
+    appFrame.style.display = "block";
+    icons.style.display = "none";
 
-//         });
+activateTask(taskElement);
 
-// telegramTask.addEventListener("click", function () {
-//         telegramTask.style.src = "telegram.html";
+}
 
-//  });
+taskbar.addEventListener("click", function (event) {
+     const taskIcon = event.target.closest("li");
+        console.log(event.target);
+        openTaskApp(taskIcon);
+});
+function openTaskApp(taskIcon) {
+        const page = taskIcon.dataset.page;
+        console.log(page);
+        appFrame.src =page;
+        appFrame.style.display = "block";
+        icons.style.display = "none";
+
+      activateTask(taskIcon);
+
+
+}
 
  /* =====================================================
            SEARCH

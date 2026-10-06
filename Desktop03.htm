@@ -28,11 +28,22 @@
     <div id="desktop">
       <div id="desktop-background">
         <div class="icons">
-          <a href="#" class="telegram">
+          <a
+            href="#"
+            class="telegram"
+            data-page="telegram.html"
+            data-task="telegramTask"
+          >
             <img src="icon/telegram-logo-1.png" alt="Telegram" />
             <span>telegram</span>
           </a>
-          <a href="#" class="youtube">
+
+          <a
+            href="#"
+            class="youtube"
+            data-page="youtube.html"
+            data-task="youtubeTask"
+          >
             <img src="icon/youtube-logo-2.png" alt="YouTube" />
             <span>youtube</span>
           </a>
@@ -41,7 +52,7 @@
             <span>youtube</span>
           </a> -->
         </div>
-        <iframe id="telegram-frame"></iframe>
+        <iframe id="app-frame"></iframe>
 
         <ul id="context-menu">
           <li>
@@ -87,9 +98,9 @@
         <li class="file-explorer"></li>
         <!-- <li class="telegram"></li>
         <li class="youtube"></li> -->
-        <li class="telegramTask"></li>
+        <li class="telegramTask" data-page="telegram.html" ></li>
 
-        <li class="youtube"></li>
+        <li class="youtubeTask"  data-page="youtube.html"></li>
 
         <ul class="system-tray">
           <li class="icons"></li>
