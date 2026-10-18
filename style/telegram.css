@@ -19,23 +19,68 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 15px;
+  /* padding: 15px; */
 
   display: flex;
+  position: relative;
+}
+#menutop {
+  width: 100%;
+  height: 30px;
+  /* border: 1px solid red; */
+  position: absolute;
+  background: #1f2020;
+  display: flex;
+}
+#title {
+  position: absolute;
+  left: 10px;
+  color: #555555;
+}
+#minimize:hover,
+#maximize:hover {
+  background: #353636;
 }
 
+#close:hover {
+  background: #e81123;
+}
+#minimize {
+  position: absolute;
+  right: 100px;
+  padding: 2px 8px 0 8px;
+
+  color: #555555;
+}
+#maximize {
+  position: absolute;
+  right: 50px;
+  padding: 6px 12px 0 12px;
+  color: #555555;
+}
+#close {
+  position: absolute;
+  right: 0;
+  padding: 4px 5px 0 8px;
+  color: #555555;
+}
 /* ============ سایدبار ============ */
 #background > .sidebar {
   width: 350px;
-  /* height: 590px; */
+  /* height: 40px; */
   background: #fff;
   border-radius: 20px;
   /* overflow: hidden; */
 
   display: flex; /* فرزندانش رو flex کن */
   flex-direction: column; /* عمودی: هدر بالا، content پایین */
-  height: 610px; /* ارتفاع ثابت */
+  height: 550px; /* ارتفاع ثابت */
   overflow: hidden; /* از سایدبار چیزی نزنه بیرون */
+
+  margin: 30px;
+  /* top: 15px;
+  left: 10px; */
+  padding-bottom: 10px;
 }
 
 /* ============ هدر ============ */
@@ -527,7 +572,7 @@ body {
   flex-direction: column;
   /* border: 1px solid red; */
   position: relative;
-  margin: 0 auto;
+  margin: 30px auto;
 }
 .ChatScreen > .header {
   height: 50px;

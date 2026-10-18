@@ -1,6 +1,43 @@
 const icons = document.querySelector(".icons");
 const appFrame  = document.querySelector("#app-frame");
 const taskbar = document.querySelector("#taskbar");
+const appWindow = document.querySelector("#app-window");
+
+
+let isResizing = false;
+let startWidth = 0;
+let startX = 0;
+
+const edgeSize = 8;
+
+// مرحلهٔ اول: کاربر دکمهٔ موس را فشار می‌دهد
+appWindow.addEventListener("mousedown", function (event) {
+  const rect = appWindow.getBoundingClientRect();
+
+  // فاصلهٔ موس تا لبهٔ راست پنجره
+  const distance = rect.right - event.clientX;
+
+  // آیا موس روی لبهٔ راست است؟
+  if (distance >= 0 && distance <= edgeSize) {
+    isResizing = true;
+    startX = event.clientX;
+    startWidth = rect.width;
+  }
+});
+
+// مرحلهٔ دوم: موس حرکت می‌کند
+document.addEventListener("mousemove", function (event) {
+  if (!isResizing) return;
+
+  const deltaX = event.clientX - startX;
+
+  appWindow.style.width = `${startWidth + deltaX}px`;
+});
+
+// مرحلهٔ سوم: کاربر دکمهٔ موس را رها می‌کند
+document.addEventListener("mouseup", function () {
+  isResizing = false;
+})
 
 function activateTask(taskElement) {
     taskElement.style.backgroundColor = "rgba(255, 255, 255, 0.12)";
